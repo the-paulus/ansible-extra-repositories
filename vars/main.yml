@@ -1,2 +1,2 @@
 ---
-# vars file for epel-remi
+extra_repositories_layman_useflags: "cvs git gpg mercurial sqlite subversion sync-plugin-portage"

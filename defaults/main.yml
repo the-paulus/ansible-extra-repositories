@@ -2,3 +2,6 @@
 repository_install_epel: True
 repository_install_ius: False
 repository_install_remi: True
+
+extra_repositories_layman_overlays:
+  - java
