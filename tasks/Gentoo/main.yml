@@ -1,0 +1,29 @@
+---
+- name: Install gentoolkit
+  shell: "emerge app-portage/gentoolkit"
+
+- name: Adding necessary useflags
+  shell: "euse -E -p {{ item.package }} {{ item.useflags }}"
+  with_items:
+    - package: "dev-lang/python"
+      useflags: "sqlite"
+
+- name: Add useflags to layman
+  shell: "euse -E -p app-portage/layman {{ extra_repositories_layman_useflags }}"
+
+- name: Install layman
+  portage:
+    package: "{{ item }}"
+  with_items:
+    - "app-portage/layman"
+    - "dev-python/pip"
+
+- name: Install overlays
+  layman:
+    name: "{{ item }}"
+  with_items: "{{ extra_repositories_layman_overlays }}"
+
+- name: Sync layman overlays
+  layman:
+    name: ALL
+    state: updated
