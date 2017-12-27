@@ -18,12 +18,12 @@
     - "app-portage/layman"
     - "dev-python/pip"
 
-- name: Install overlays
-  layman:
-    name: "{{ item }}"
+- name: Fetch remote list of overlays.
+  shell: layman -f
+
+- name: Add overlays
+  shell: "layman -a {{ item }} || true "
   with_items: "{{ extra_repositories_layman_overlays }}"
 
 - name: Sync layman overlays
-  layman:
-    name: ALL
-    state: updated
+  shell: "layman -S"
