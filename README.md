@@ -3,18 +3,28 @@ Extra Repositories
 
 Adds the EPEL, IUS, and Remi repositories to CentOS or RedHat.
 
+Installs layman, adds overlays, and syncs new overlays for Gentoo systems.
+
 Requirements
 ------------
 
-RedHat or CentOS versions 6 or 7.
+None.
 
 Role Variables
 --------------
 
-```
+For Red Hat based systems:
+```yml
 repository_install_epel: True
 repository_install_ius: False
 repository_install_remi: True
+```
+
+For Gentoo systems:
+```yml
+extra_repositories_layman_overlays:
+  - java
+  - pentoo
 ```
 
 Dependencies
@@ -26,9 +36,13 @@ Example Playbook
 ----------------
 
 ```
-    - hosts: servers
-      roles:
-         - { role: extra_repositories }
+- hosts: all
+  roles:
+    - { role: the-paulus.extra-repositories }
+
+- hosts: all
+  roles:
+    - role: the-paulus.extra-repositories 
 ```
 
 License
