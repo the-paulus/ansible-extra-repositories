@@ -1,20 +1,18 @@
 galaxy_info:
   author: Paul Lyon
-  description: your description
-  company: your company (optional)
-  issue_tracker_url: http://example.com/issue/tracker
+  description: Ansible role to install additional repositories and overlays.
+  issue_tracker_url: https://github.com/the-paulus/ansible-extra-repositories/issues
   license: BSD
   min_ansible_version: 1.8
   github_branch: master
   platforms:
-    - name: CentOS
+    - name: EL
       versions:
       - 6
       - 7
-    - name: RedHat
+    - name: Gentoo
       versions:
-      - 6
-      - 7
+      - 2
   galaxy_tags:
     - repository
 
